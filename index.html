@@ -1,0 +1,58 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apple Vision Pro</title>
+    <link rel="stylesheet" href="code.css" />
+  </head>
+  <body>
+    <main>
+      <article>
+        <section>
+          <h2>Apple Vision Pro.</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ipsa
+            quam, porro est voluptas perspiciatis quasi qui, quis reiciendis
+            voluptatum, praesentium itaque modi vero? Perferendis aspernatur
+            ipsum nisi cupiditate repellendus repellat eveniet error dicta modi.
+          </p>
+        </section>
+        <img src="img/apple-gif.gif" alt="iPad" />
+      </article>
+      <article>
+        <section>
+          <h2>You'll get</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ipsa
+            quam, porro est voluptas perspiciatis quasi qui, quis reiciendis
+            voluptatum, praesentium itaque modi vero? Perferendis aspernatur
+            ipsum nisi cupiditate repellendus repellat eveniet error dicta modi.
+          </p>
+        </section>
+        <img src="img/apple-img.png" alt="wifi" />
+      </article>
+    </main>
+    <script>
+      const main = document.querySelector("main");
+      const articles = document.querySelectorAll("article");
+
+      function changeTheme(entries) {
+        return entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            main.classList.toggle("light-theme");
+          }
+        });
+      }
+
+      function detect(article) {
+        const options = { threshold: 0.3 };
+        const io = new IntersectionObserver(changeTheme, options);
+        io.observe(article);
+      }
+
+      const init = () => articles.forEach(detect);
+
+      window.addEventListener("load", init, false);
+    </script>
+  </body>
+</html>
